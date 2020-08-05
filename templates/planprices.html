@@ -333,7 +333,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn green-btn mt-40" data-dismiss="modal" aria-label="Close" onclick="doOrderStep2()"><span aria-hidden="true">Pay only $99 USD</span></button>
+                    <button type="submit" class="btn green-btn mt-40" data-dismiss="modal" aria-label="Close" onclick="doOrderStep2()">Pay only $99 USD</button>
                     {% comment %} <a class="btn green-btn" onclick="doPay()">Pay only $99 USD</a> {% endcomment %}
                 </div>
             </div><!-- /.modal-content -->
@@ -378,7 +378,6 @@
                     selectedTheme: '1',
                     tires:'3',
                     currency:'usd',
-                    
                     csrfmiddlewaretoken:$('#modal_form_signup input[name=csrfmiddlewaretoken]').val(),
                 },
 

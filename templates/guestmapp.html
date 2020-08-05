@@ -47,14 +47,14 @@
                 </table>
             </div>
             <div class="col-lg-5 col-md-5">
-                <a href="#" class="btn green-btn mt-30">Order new project</a>
+                <a href="{% url 'planprices' %}" class="btn green-btn mt-30">Order new project</a>
                 <h1 class="section-title mt-68">Upload blueprint</h1>
                 <h4 class="header-h4-normal mt-20 ta-center" style="color: #414F5F;">If you have your Blueprint please upload it</h4>
                 <div class="ta-center">
-                    <label for="fileselect">
+                    {% comment %} <label for="fileselect"> {% endcomment %}
                         <img src="{% static 'img/upload-blueprint.png' %}" class="upload-btn">
-                    </label>
-                    <input type="file" id="fileselect" name="fileselect" accept=".pdf" style="visibility: hidden;" />
+                    {% comment %} </label> {% endcomment %}
+                    {% comment %} <input type="file" id="fileselect" name="fileselect" accept=".pdf" style="visibility: hidden;" /> {% endcomment %}
                 </div>
             </div>
             <div class="col-lg-12 col-md-12">
@@ -286,4 +286,70 @@ for Android ones </p>
 {% endblock main %}
 
 {% block script %}
+<script src="{% static 'js/upload.js' %}"></script>
+
+<div class="modal" id="modal_form_blueprint" role="dialog">
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body form">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <form action="#" id="blueprint-form" class="form-horizontal">
+                        {% csrf_token %}
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="modal-title">Uploading scan</label>
+                                <div class="ta-center mt-30">
+                                    <div class="blueprint-drag" for="fileselect">
+                                        <img src="{% static 'img/upload.png' %}" class="upload-btn">
+                                        <p>Drag and drop your photo</p>
+                                    </div>
+                                    <input type="file" id="fileselect" name="fileselect" accept=".pdf" style="visibility: hidden;" />
+                                </div>
+                                <div class="modal-input-group mt-36">
+                                    <label class="modal-input-label">Or upload from Airbnb</label>
+                                    <input id="airbnb" name="airbnb" placeholder="Link to your listing" class="form-control" type="text">
+                                </div>                                    
+                                <div class="modal-input-group">
+                                    <label class="modal-input-label">Or upload from Google Drive</label> 
+                                    <input id="google_drive" name="google_drive" placeholder="Link" class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="alert alert-danger" id="alert-div">
+                                <button id="msg-btn" type="button" class="close">&times;</button>
+                            </div>
+                        </div>
+                        <button type="submit" id="login-btn" class="btn green-btn mt-40">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modal_form_blueprint_submitted" role="dialog" style="display: none;">
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body form">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="success-header ta-center">
+                        <img src="{% static 'img/success-check.png' %}">
+                    </div>
+                    <div class="success-content">
+                        <h3 class="price">$99 USD</h3>
+                        <h4>Your payment is complete</h4>
+                    </div>
+                    <p class="email-paragraph">Check your email address for proff of purchase</p>
+                    <p class="suggest-paragraph">To start scanning tiers, please use the Guest App on your mobile device.</p>
+                    <div class="app-link">
+                        <img src="{% static 'img/google-store.png' %}">
+                        <img src="{% static 'img/apple-store.png' %}">
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</div>
+
 {% endblock script %}

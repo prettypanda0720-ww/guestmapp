@@ -9,11 +9,10 @@ from account.models import Profile
 import json
 
 def ajax_login(request):
-    
     if request.method == 'POST':
-        username = request.POST.get('username', '').strip()
+        username = request.POST.get('email', '').strip()
         password = request.POST.get('password', '').strip()
-
+        
         if username and password:
             user = authenticate(username=username, password=password)
             if user is not None:
@@ -31,9 +30,9 @@ def ajax_login(request):
 
                     data = {'success': True, 'order':exist_order}
                 else:
-                    data = {'success': False, 'error': 'User is not active'}
+                    data = {'success': False, 'message': 'User is not active'}
             else:
-                data = {'success': False, 'error': 'Wrong username and/or password'}
+                data = {'success': False, 'message': 'Invalid username or password'}
 
     return JsonResponse(data)
 

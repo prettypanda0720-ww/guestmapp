@@ -2923,7 +2923,7 @@ ol {
     @include auth-modal;
     .modal-body{
     	width: 456px;
-		height: 420px;
+		height: 480px;
 
 		@media only screen and (max-width: 420px) {
 			width: 300px;
@@ -3260,6 +3260,32 @@ ol {
 	}
 }
 
+#modal_form_blueprint{
+	@include auth-modal;
+    .modal-body{
+    	width: 456px;
+		height: 610px;
+
+		.blueprint-drag {
+			background-color: #bfcdd6;
+		}
+
+		@media only screen and (max-width: 420px) {
+			width: 300px;
+			height: 395px;
+			.modal-title{
+				font-size: 25px;
+				display: inline-block;
+			}
+			.forgot-password{
+				a{
+					display: block;
+				}
+			}
+		}
+    }
+}
+
 .modal-title {
 	@include base-h2;
 	color: $color-blue-dark;
@@ -3368,3 +3394,23 @@ ol {
 		}
 	}
 }
+
+#alert-div, #feedback_login{
+	display: none;
+	justify-content: center;
+	padding: 10px;
+	button{
+		font-family: Roboto slab;
+		font-size: 18px !important;
+		text-align: center;
+		font-weight: normal;
+	}
+	&.active{
+		display: flex;
+	}
+}
+// .error-wrapper.active{
+// 	display: flex !important;
+// 	padding: 15px;
+// 	background-color: red;
+// }

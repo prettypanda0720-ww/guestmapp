@@ -197,8 +197,7 @@
         } else {
             $('#modal_form_order_step2 #guestmapp_style').hide();
         }
-    })
-
+    });
 })(jQuery);
 
 function doLogin()
@@ -286,3 +285,5 @@ function gotoPricingSection()
     var posY = $(".pricing-section").position();
     $(".pricing-section").scrollTop(posY);      
 }
+
+
